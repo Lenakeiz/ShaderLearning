@@ -1,2 +1,2 @@
 # ShaderLearning
-A repository where I am going to mess up with hlsl while learning shaders
+A repository I am using to learn shaders and hlsl within Unity
