@@ -1,0 +1,77 @@
+
+
+Features
+
+• Toon Character Model
+• 366 Tris Main Character
+• Mechanim ready
+• 22x 2048x2048px Textures
+• Transparent Toon Shader (Ninja)
+
+Update 1.1
+
+• Added Rumbo Texture
+
+Update 1.2
+
+• Added Ragdoll to Prefabs* +Control Script
+• Added Floating Ragdoll example (Astro)
+• Added Undead Yeti Texture
+• Added Decapitated Prefab +Control Script
+• Added Pirate Texture
+• Added Camo Ninja Texture
+• Added Pumking Head Model, Texture and Particle
+• Fixed File Names
+*Ragdoll can be though on mobile
+
+Update 1.3
+• Added Decapitation and Head Explosion
+• Added Cop Texture
+• Added Chef Texture
+• Added Fireman Texture
+• Added Blinking
+
+>>>  Important Update Notes <<<
+Rename "RagdollController" to "ToonCharacterController"
+
+Update 1.4
+• Added Convict Texture
+• Added Santa Claus Model & Texture
+• Added Elf Model & Texture
+• Added Snowman Model & Texture (can't move hands)
+
+Update 1.5
+• Gravity now applies
+• Added Girl Model & Texture
+• Added Wizard Model & Texture
+• Added Evil Wizard Model & Texture
+• Added Knight Texture
+
+Update 1.6
+• Added Archer Girl	Model & Texture
+• Added Girlie Girl Model & Texture
+• Added Zombie Girl Texture 
+• Improved Male Zombie Texture(Old included)
+
+Update 1.7
+• Added 100+ Bonus Mechanim Animations
+
+Update 1.9.4
+• Added characters without colliders or rigidbodies in prefab folder "_Character_Clean"
+
+
+Mobile Optimize 
+• Change texture size to 512 or lower
+	Change size in image editor first then sharpen if necessary
+		(This might improve details when downsizing and decrease build time)
+• Enable Mipmap
+• Avoid using too many ragdolls
+
+
+
+Unluck Software
+www.chemicalbliss.com
+
+
+Thanks for purchasing this prefab
+Have fun with Unity3D :)

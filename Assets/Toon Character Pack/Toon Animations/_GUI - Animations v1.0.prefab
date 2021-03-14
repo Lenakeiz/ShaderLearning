@@ -1,0 +1,155 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 400000}
+  - component: {fileID: 11400000}
+  m_Layer: 0
+  m_Name: _GUI - Animations v1.0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.5743105, y: 2.3777525, z: -2.3066564}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f2d588e4ee6e2341be06551db202c62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 0}
+  _animations:
+  - Walk 01
+  - Walk 02
+  - Walk 03
+  - Walk 04
+  - Walk 05
+  - Driving 01
+  - Driving 02
+  - Fall 02
+  - Fall 03
+  - Ledge 01
+  - Ledge 02
+  - Happy 01
+  - Idle 01
+  - Idle 02
+  - Idle 03
+  - Arguing 01
+  - Laughing 01
+  - Cold 01
+  - Scared 01
+  - Upset 01
+  - Violin 01
+  - Run 01
+  - Run 02
+  - Rowing 01
+  - Boxing 01
+  - Bow and Arrow 01
+  - Shaking Hand 01
+  - Sit 01
+  - Wheel 01
+  - Jump 01 in air
+  - Jump 01 land
+  - Jump 01 start
+  - Shotgun 01
+  - Flip 01
+  - Fall 01
+  - Fishing 01
+  - Fishing 02
+  - Push 01
+  - Digging 01
+  - Drag 01
+  - Sweep 01
+  - Drumming 01
+  - Run 03 Duck
+  - Walk Back 01
+  - Sleep 01
+  - Stretch 01
+  - Sleep 02
+  - Scared 02
+  - Run 04 Start
+  - Run 04 Stop
+  - Roll 01
+  - Run 05 Sprint
+  - Run 06 Stop
+  - Jump 02
+  - Jump 01
+  - Swim 01
+  - Swim 02
+  - Swim 03
+  - Animal 01 Gorilla
+  - Walk 07
+  - Magic 01
+  - Run 07 Weird
+  - Walk 08 Hunched
+  - Walk 09 Weird
+  - Jump 03
+  - Sit 02
+  - Sit 03
+  - Walk 10 Hurt
+  - Walk 11 Drunk
+  - Side Step 01
+  - Pick Up 01
+  - Turn 01
+  - Jack Michaelson 01
+  - Turn 02
+  - Idle 04
+  - Walk 12 Creeping
+  - Jump 04
+  - Superhero 01
+  - Swing 01
+  - Swing 01 Start
+  - Walk 13
+  - Walk 14
+  - Boxing 02
+  - Sneak 01
+  - Chubby 01 Walk
+  - Chubby 01 Walk Back
+  - Chubby 01 Side Step
+  - Golf 01
+  - Golf 02
+  - Jump 06
+  - Roll 02
+  - Couch 01
+  - Kick 01
+  - Fall 04
+  - Ledge 03
+  - Flip 02
+  - Flip 03
+  - Robot 01
+  - Sneak 02
+  - Crawl 01
+  - Walk 15 Sick Zombie
+  - Walk 06
+  - Charge 01
+  _crossFade: 0
+  maxButtons: 10
+  removeTextFromButton: 
+  autoChangeDelay: 0
+  _lastAnim: 
