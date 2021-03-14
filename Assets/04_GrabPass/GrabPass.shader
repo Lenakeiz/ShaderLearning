@@ -60,10 +60,22 @@
                 //Similar to tex2D by divides the coordinate of the texture by w (to calculate for the projection)
                 //i.uvgrab.y = i.uvgrab.y + 0.2*abs(sin(_Time.y));
                 float2 projuv = i.uvgrab.xy / i.uvgrab.w;
-                fixed4 col = 0;
+                //Create a ripple from the center of the quad texture
+                //Calculate distance from the center
+                float mappedUV = tex2D(_BackgroundTexture,projuv);
+                float wavesize = 2;
+                //return 0.5 * (sin(mappedUV / wavesize + _Time.y) + 1);
 
+                float distanceFromOrigin = distance(mappedUV, float2(0.5,0.5));
+                //Calculating the offset using a sinwave
+                float offset = (sin(_Time.y + distanceFromOrigin / wavesize)) * 0.5;
+                //projuv.x += offset;
+                //projuv.x = frac(projuv.x);
+                fixed4 col = 1 - tex2D(_BackgroundTexture,projuv);
+                return col;
+
+                //This is a blur effect
                 const float grabSamples = 32;
-
                 float noise = 0;
                 Unity_RandomRange_float(i.uvgrab.xy,0,1,noise);
                 for(float s = 0; s < grabSamples; s++)
