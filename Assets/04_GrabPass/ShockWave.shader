@@ -51,7 +51,7 @@ Shader "Custom/Shockwave"
 				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv = ComputeGrabScreenPos(o.vertex);
 				o.obj_vertex = v.vertex;
-				o.uv_center = ComputeGrabScreenPos(UnityObjectToClipPos(float4(0., 0., 0, 1)));
+				o.uv_center = ComputeGrabScreenPos(UnityObjectToClipPos(float4(0.5, 0.5, 0, 1)));
 				return o;
 			}
 		
