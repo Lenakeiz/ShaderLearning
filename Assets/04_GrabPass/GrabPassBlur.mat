@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GrabPass
-  m_Shader: {fileID: 4800000, guid: 74d6b6188d85a8e4695eade4bcb5901a, type: 3}
+  m_Name: GrabPassBlur
+  m_Shader: {fileID: 4800000, guid: cb6893af5c6defb418f266e6105e1960, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -57,7 +57,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Amount: 10
-    - _Blur: 0.0096
+    - _Blur: 0.02
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
