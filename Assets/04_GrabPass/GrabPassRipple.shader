@@ -5,7 +5,7 @@
         _Color("Color",Color) = (1,1,1,1)
         _Amount ("Amount", float) = 10
         _WaveSpeed("Wave Speed", range(0, 15)) = 5
-        _WaveAmount("Wave Amount", range(0, 10)) = 5
+        _WaveAmount("Wave Amount", range(0, 50)) = 5
     }
     SubShader
     {
@@ -78,7 +78,7 @@
                 // Add to the current uv a vector that is radial with respect to the center and apply the sin wave to this
                 uvcentered = projuv + normalize(uvcentered) * sin(displacement) * amount;
 
-                return tex2D(_BackgroundTexture,uvcentered);
+                return 1 - tex2D(_BackgroundTexture,uvcentered);
             }
             ENDCG
         }
