@@ -11,24 +11,37 @@
 /[Mm]emoryCaptures/
 /[Aa]ssets/BOXOPHOBIC/*
 /[Aa]ssets/BOXOPHOBIC*
+/[Aa]ssets/BOXOPHOBIC.meta
 /[Aa]ssets/PolygonKnights/*
 /[Aa]ssets/PolygonKnights*
+/[Aa]ssets/PolygonKnights.meta
 /[Aa]ssets/Toon\ Character\ Pack/*
 /[Aa]ssets/Toon\ Character\ Pack*
+/[Aa]ssets/Toon\ Character\ Pack.meta
 /[Aa]ssets/Top-Down-Cartoon-Dungeon-Tileset/*
 /[Aa]ssets/Top-Down-Cartoon-Dungeon-Tileset*
+/[Aa]ssets/Top-Down-Cartoon-Dungeon-Tileset.meta
+/[Aa]ssets/SampleScenes/*
+/[Aa]ssets/SampleScenes*
+/[Aa]ssets/SampleScenes.meta
 /[Aa]ssets/Scenes/*
 /[Aa]ssets/Scenes*
+/[Aa]ssets/Scenes.meta
 /[Aa]ssets/AurynSky/*
 /[Aa]ssets/AurynSky*
+/[Aa]ssets/AurynSky.meta
 /[Aa]ssets/Gizmos/*
 /[Aa]ssets/Gizmos*
+/[Aa]ssets/Gizmos.meta
 /[Aa]ssets/Prefabs/*
 /[Aa]ssets/Prefabs*
+/[Aa]ssets/Prefabs.meta
 /[Aa]ssets/Standard\ Assets/*
 /[Aa]ssets/Standard\ Assets*
+/[Aa]ssets/Standard\ Assets.meta
 /[Aa]ssets/Materials/*
 /[Aa]ssets/Materials*
+/[Aa]ssets/Materials.meta
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
