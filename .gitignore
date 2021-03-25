@@ -17,6 +17,7 @@
 /[Aa]ssets/AurynSky/*
 /[Aa]ssets/Gizmos/*
 /[Aa]ssets/Prefabs/*
+/[Aa]ssets/Prefabs
 /[Aa]ssets/Standard\ Assets/*
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
