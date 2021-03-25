@@ -21,6 +21,7 @@
             {
                 "Queue" = "Geometry"
             }
+
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -57,15 +58,11 @@
                 return o;
             }
 
-            fixed4 frag (v2f i) : SV_Target
+            float4 frag (v2f i) : SV_Target
             {
-                float2 coords = i.uvv.xy / i.uvv.w;
-                coords.x += _Time * _Speed;
+                float2 projUv = i.uvv.xy / i.uvv.w;
 
-                fixed4 gol = tex2D(_GoldTex, coords * _Range);
-                fixed4 col = tex2D(_MainTex, i.uv);
-
-                col *= gol / _Saturation;
+                float4 col = tex2D(_GoldTex, projUv) * tex2D(_MainTex, i.uv) / _Saturation;
 
                 return col + _Brightness;
             }
@@ -80,32 +77,33 @@
             }
 
             ZWrite Off
-            Blend One One //the effect is additive
+            Blend SrcColor DstColor //the effect is additive
 
             CGPROGRAM
-            #pragma vertex vertexShader
-            #pragma fragment fragmentShader
+            #pragma vertex vert
+            #pragma fragment frag
             #include "UnityCG.cginc"
 
-            struct vertexInput
+            struct appdata
             {
-                float4 vertex : POSITION;
                 float4 normal : NORMAL;
+                float4 vertex : POSITION;   
             };
 
-            struct vertexOutput
+            struct v2f
             {
+                float3 uv : TEXCOORD0;
                 float4 pos : SV_POSITION;
                 float3 normal : NORMAL;
-                float3 uv : TEXCOORD0;
+
             };
 
             float4 _Color;
             float _Rim;
 
-            vertexOutput vertexShader (vertexInput i)
+            v2f vert (appdata i)
             {
-                vertexOutput o;
+                v2f o;
                 o.pos = UnityObjectToClipPos(i.vertex);
                 o.normal = normalize(mul((float3x3)unity_ObjectToWorld, i.normal.xyz));
                 o.uv = normalize(_WorldSpaceCameraPos - mul((float3x3)unity_ObjectToWorld, i.vertex.xyz));
@@ -118,7 +116,7 @@
                 return col;
             }
 
-            fixed4 fragmentShader (vertexOutput o) : Color
+            fixed4 frag (v2f o) : Color
             {
                 fixed rimColor = rimEffect(o.uv, o.normal.xyz);
                 return _Color * rimColor * rimColor;
