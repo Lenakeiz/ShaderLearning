@@ -53,7 +53,7 @@
                 float2 projuv = i.uvgrab.xy / i.uvgrab.w;
                 float4 col;
                 //This is a blur effect, it s another technique that can be used with a grab pass
-                const float grabSamples = 32;
+                const float grabSamples = 128;
                 float noise = 0;
                 Unity_RandomRange_float(i.uvgrab.xy,0,1,noise);
                 for(float s = 0; s < grabSamples; s++)
@@ -64,7 +64,7 @@
                     noise++;
                 }
 
-                return (col /= grabSamples) * _Color;
+                return (col /= grabSamples) * _Color ;
             }
             ENDCG
         }
