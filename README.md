@@ -4,7 +4,7 @@ Hello and thank you for stopping by!
 I am using this repository to learn about Shaders in Unity and HLSL. 
 
 I am doing it old style so no ShaderGraph or any nodebase editor.
-The reason is quite simple: I want to understand the underlying mechanisms for understanding different shaders techniques and since I really enjoy playing around with math and matrices I think standard HLSL is the way to go.
+The reason is quite simple. I want to understand the underlying mechanisms for different shader techniques, plus I really enjoy playing around with math and matrices, so I think standard HLSL is the way to go.
 
 I am using Unity _2019.4.18f1_.
 
