@@ -42,7 +42,7 @@ There are plenty of resources available out there which makes this learning fun 
 The [Unity documentation](https://docs.unity3d.com/Manual/SL-ShadingLanguage.html) is where to start.
 Together with the [HLSL reference](https://docs.microsoft.com/en-us/windows/win32/direct3dhlsl/dx-graphics-hlsl-reference) for the DirectX.
 
-And finally here a list of amazing people sharing their knowledge with shaders. The list is mixed in terms of difficulty in the explained, but neverthless I think it useful to have a more broader idea of different uses of shaders.
+And finally here a list of amazing people sharing their knowledge with shaders. The list is mixed in terms of the level of techniques explained, but neverthless I think it useful to have a more broader idea of different uses for shaders.
 
 - [Harry Alizavakis](https://twitter.com/HarryAlisavakis)
 - [Jetelly](https://www.youtube.com/channel/UCDe9IaIvr1XOP3vbTgIekBQ)
