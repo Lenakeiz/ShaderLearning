@@ -10,15 +10,25 @@
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 /[Aa]ssets/BOXOPHOBIC/*
+/[Aa]ssets/BOXOPHOBIC*
 /[Aa]ssets/PolygonKnights/*
+/[Aa]ssets/PolygonKnights*
 /[Aa]ssets/Toon\ Character\ Pack/*
+/[Aa]ssets/Toon\ Character\ Pack*
 /[Aa]ssets/Top-Down-Cartoon-Dungeon-Tileset/*
+/[Aa]ssets/Top-Down-Cartoon-Dungeon-Tileset*
 /[Aa]ssets/Scenes/*
+/[Aa]ssets/Scenes*
 /[Aa]ssets/AurynSky/*
+/[Aa]ssets/AurynSky*
 /[Aa]ssets/Gizmos/*
+/[Aa]ssets/Gizmos*
 /[Aa]ssets/Prefabs/*
-/[Aa]ssets/Prefabs
+/[Aa]ssets/Prefabs*
 /[Aa]ssets/Standard\ Assets/*
+/[Aa]ssets/Standard\ Assets*
+/[Aa]ssets/Materials/*
+/[Aa]ssets/Materials*
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
