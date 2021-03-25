@@ -1,4 +1,4 @@
-# ShaderLearning
+# Learning Shaders
 
 Hello and thank you for stopping by!
 I am using this repository to learn about Shaders in Unity and HLSL.
