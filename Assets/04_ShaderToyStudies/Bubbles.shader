@@ -1,4 +1,7 @@
 ﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+// This is a study I have been doing to port simpler shadertoy to unity. Most of them are based on image effects and needs to be placed on the camera.
+// I am following a tutorial and I ll come back to this
+// https://www.shadertoy.com/view/4dl3zn
 
 Shader "Custom/Bubbles" {
 

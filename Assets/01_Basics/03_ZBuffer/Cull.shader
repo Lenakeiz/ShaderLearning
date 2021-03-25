@@ -1,23 +1,28 @@
-﻿Shader "Custom/ZTestSingleTex"
+﻿Shader "Custom/Cull"
 {
     Properties
     {
-        [Enum(UnityEngine.Rendering.CompareFunction)] _ZTestFirstPass("ZTest first pass", Int) = 4 //"LessEqual"
-
-        _MainTex ("Texture", 2D) = "white" {}
-        _Color("Color",Color) = (1,1,1,1)
+        [Enum(UnityEngine.Rendering.CullMode)] _CullMode("Cull Mode", Int) = 0
+        _MainTex ("Texture", 2D) = "white" {}        
     }
     SubShader
     {
+        //CULL Can be used here
+        //Cull back //default
+        //Cull Front
+        //Cull Off
         Pass
         {
-            
-            ZWrite On ZTest [_ZTestFirstPass]
+            //Or here
+            Cull [_CullMode] 
+            //Cull is used to render different faces of the polygon based on how they face the camera. Culling front makes the front faces to be removed making a nice effect. 
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
 
             #include "UnityCG.cginc"
+
+            
 
             struct appdata
             {
@@ -46,6 +51,7 @@
             {
                 // sample the texture
                 fixed4 col = tex2D(_MainTex, i.uv);
+                // apply fog
                 return col;
             }
             ENDCG

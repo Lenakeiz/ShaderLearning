@@ -1,27 +1,23 @@
-﻿Shader "Custom/Cull"
+﻿Shader "Custom/SimpleUnlit"
 {
     Properties
     {
-        [Enum(UnityEngine.Rendering.CullMode)] _CullMode("Cull Mode", Int) = 0
-        _MainTex ("Texture", 2D) = "white" {}        
+        _MainTex ("Texture", 2D) = "white" {}
     }
     SubShader
     {
-        //CULL Can be used here
-        // Cull back //dafautl
-        //Cull Front
-        //Cull Off
+        Tags { "RenderType"="Opaque" }
+        LOD 100
+
         Pass
         {
-            Cull [_CullMode]
-            //CULL Can be used here
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
+            // make fog work
+            #pragma multi_compile_fog
 
             #include "UnityCG.cginc"
-
-            
 
             struct appdata
             {
@@ -32,6 +28,7 @@
             struct v2f
             {
                 float2 uv : TEXCOORD0;
+                UNITY_FOG_COORDS(1)
                 float4 vertex : SV_POSITION;
             };
 
@@ -43,6 +40,7 @@
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+                UNITY_TRANSFER_FOG(o,o.vertex);
                 return o;
             }
 
@@ -51,6 +49,7 @@
                 // sample the texture
                 fixed4 col = tex2D(_MainTex, i.uv);
                 // apply fog
+                UNITY_APPLY_FOG(i.fogCoord, col);
                 return col;
             }
             ENDCG
