@@ -42,6 +42,9 @@
 /[Aa]ssets/Materials/*
 /[Aa]ssets/Materials*
 /[Aa]ssets/Materials.meta
+/[Aa]ssets/05_ShaderScriptsMessingAround/*
+/[Aa]ssets/05_ShaderScriptsMessingAround*
+/[Aa]ssets/05_ShaderScriptsMessingAround.meta
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
