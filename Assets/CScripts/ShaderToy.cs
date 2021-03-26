@@ -13,7 +13,8 @@ public class ShaderToy : UnityStandardAssets.ImageEffects.ImageEffectBase
     {
         // To draw the shader at full resolution, use:
         // Graphics.Blit (source, destination, material);
-
+        horizontalResolution = Screen.currentResolution.width;
+        verticalResolution = Screen.currentResolution.height;
         // To draw the shader at scaled down resolution, use:
         RenderTexture scaled = RenderTexture.GetTemporary(horizontalResolution, verticalResolution);
         Graphics.Blit(source, scaled, material);
