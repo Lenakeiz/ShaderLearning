@@ -30,34 +30,32 @@ Shader "Custom/DeconstructingBubbles" {
 
             float sdCircle( float2 p, float pos, float r ) 
             {
-                return length(pos-p)-r;
+                return length(p-pos)-r;
             }
 
             float4 circle(float2 uv, float2 pos, float rad, float3 color) {
-	            float d = length(pos - uv) - rad;
+	            float d = length(uv - pos) - rad;
 	            float t = clamp(d, 0.0, 1.0);
 	            return float4(color.x,color.y,color.z, 1.0 - t);
             }
 
             float4 frag(v2f i) : SV_Target {
-           
-                float2 uv = i.position.xy;
-                //uv.y = 1 - uv.y;
-                //uv.x *= _ScreenParams.x/ _ScreenParams.y ;
+                
+                //This is an attempt to write a single circle on the screen
 
-                float2 center = _ScreenParams.xy * 0.5;
-                float radius = 0.25 * _ScreenParams.y;
-                          
-                   // Background layer
-	            float4 layer1 = rgb(210.0, 222.0, 228.0, 1.0);
-	
-	            // Circle
-	            float3 red = rgb(225.0, 95.0, 60.0, 1.0);
-	            float4 layer2 = circle(uv, center, radius, (float3)red.xyz);
-	
-	            // Blend the two
-	            float4 fragColor = lerp(layer1, layer2, layer2.a);
-                return fragColor;
+                float2 uv = -1.0+2.0*i.position.xy/_ScreenParams.xy;//We map the coordinate from 0 to 1
+                //uv.y = 1 - uv.y;
+                uv.x *= _ScreenParams.x/ _ScreenParams.y ;
+
+                float2 center = float2(0.5,0.5);
+                float radius = 0.5;
+                
+                float d = length(uv) - radius;
+
+                float col = float4(d,d,d,1);
+
+                return col;
+
             }
 
             ENDCG

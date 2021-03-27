@@ -25,7 +25,7 @@ Shader "Custom/Bubbles" {
 
             fixed4 frag(v2f i) : SV_Target {
            
-                float2 uv = -1.0 + 2.0*i.position.xy/ _ScreenParams.xy;
+                float2 uv = -1.0 + 2.0*i.position.xy/ _ScreenParams.xy; //maps from -1 to 1. This is because all the randomization are done using sin which goes from -1 tp 1
                 uv.x *= _ScreenParams.x/ _ScreenParams.y ;
            
                 // Background
