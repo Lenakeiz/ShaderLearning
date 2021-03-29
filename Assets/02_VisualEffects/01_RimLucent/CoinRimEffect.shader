@@ -105,13 +105,17 @@
             {
                 v2f o;
                 o.pos = UnityObjectToClipPos(i.vertex);
+                //Pass the normal to the fragment shader, but keep the orientation in the world coordinate
                 o.normal = normalize(mul((float3x3)unity_ObjectToWorld, i.normal.xyz));
+                //Save in the texture the direction from the vertex in world coordinate to the camera position
                 o.uv = normalize(_WorldSpaceCameraPos - mul((float3x3)unity_ObjectToWorld, i.vertex.xyz));
                 return o;
             }
 
             float rimEffect(float3 uv, float3 normal)
             {
+                //To create a rim effect we return the maximum effect when the normal is perpendicular to the direction of the camera.
+                //This function will return 0 for vertices that are facing the camera (and so the additive blending will not make much difference)
                 float col = 1 - abs(dot(uv,normal)) * _Rim;
                 return col;
             }

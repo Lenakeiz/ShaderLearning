@@ -28,33 +28,26 @@ Shader "Custom/DeconstructingBubbles" {
 	            return float4(r / 255.0, g / 255.0, b / 255.0, alpha);
             }
 
-            float sdCircle( float2 p, float pos, float r ) 
+            float sdCircle( float2 p, float2 offset, float r ) 
             {
-                return length(p-pos)-r;
-            }
-
-            float4 circle(float2 uv, float2 pos, float rad, float3 color) {
-	            float d = length(uv - pos) - rad;
-	            float t = clamp(d, 0.0, 1.0);
-	            return float4(color.x,color.y,color.z, 1.0 - t);
+                return length(p-offset)-r;
             }
 
             float4 frag(v2f i) : SV_Target {
                 
                 //This is an attempt to write a single circle on the screen
-
-                float2 uv = -1.0+2.0*i.position.xy/_ScreenParams.xy;//We map the coordinate from 0 to 1
-                //uv.y = 1 - uv.y;
-                uv.x *= _ScreenParams.x/ _ScreenParams.y ;
+                float2 uv = (2.0 * i.position.xy - _ScreenParams.xy)/_ScreenParams.y;//We map the coordinate from 0 to 1
 
                 float2 center = float2(0.5,0.5);
                 float radius = 0.5;
                 
-                float d = length(uv) - radius;
+                float3 backgroundColor = float3(0.7,0.7,0.7);
+                float3 circleColour = float3(0.9, 0.5, 0.5);
+                float d = sdCircle(uv,float2(-0.0,0.0),0.2);
 
-                float col = float4(d,d,d,1);
+                float3 col = lerp(backgroundColor,circleColour,1 - smoothstep(0.0,0.01,d));
 
-                return col;
+                return float4(col,1.0);
 
             }
 
