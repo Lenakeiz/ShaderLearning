@@ -28,26 +28,41 @@ Shader "Custom/DeconstructingBubbles" {
 	            return float4(r / 255.0, g / 255.0, b / 255.0, alpha);
             }
 
+            float hash(float seed)
+            {
+	            // Return a "random" number based on the "seed"
+                return frac(sin(seed) * 43758.5453);
+            }
+
+            float2 hashPosition(float seed)
+            {
+	            // Return a "random" position based on the "seed"
+	            return float2(hash(seed), hash(seed * 2.0));
+            }
+
             float sdCircle( float2 p, float2 offset, float r ) 
             {
                 return length(p-offset)-r;
             }
-
+            
             float4 frag(v2f i) : SV_Target {
                 
                 //This is an attempt to write a single circle on the screen
                 float2 uv = (2.0 * i.position.xy - _ScreenParams.xy)/_ScreenParams.y;//We map the coordinate from 0 to 1
 
-                float2 center = float2(0.5,0.5);
-                float radius = 0.5;
-                
-                float3 backgroundColor = float3(0.7,0.7,0.7);
+                float3 finalColor = float3(0.7,0.7,0.7); //Background
                 float3 circleColour = float3(0.9, 0.5, 0.5);
-                float d = sdCircle(uv,float2(-0.0,0.0),0.2);
 
-                float3 col = lerp(backgroundColor,circleColour,1 - smoothstep(0.0,0.01,d));
+                for (int i = 0; i < 20; i++) 
+                {
+                    float seed = float(i);
+                    float radius = 0.4 * pow(2,sin(24.0*seed)); // hash(seed * float(i) * 546 + 0.5);
+                    float2 randomPos = float2(-2.0 + hash(seed + 1.0)*4.0 ,-1.0);
+                    float d = sdCircle(uv,randomPos,radius);
+                    finalColor = lerp(finalColor,circleColour,1 - smoothstep(0.0,0.01,d));
+                }
 
-                return float4(col,1.0);
+                return float4(finalColor,1.0);
 
             }
 
