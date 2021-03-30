@@ -50,8 +50,9 @@ Shader "Custom/DeconstructingBubbles" {
                 //This is an attempt to write a single circle on the screen
                 float2 uv = (2.0 * i.position.xy - _ScreenParams.xy)/_ScreenParams.y;//We map the coordinate from 0 to 1
 
-                float3 finalColor = float3(0.7,0.7,0.7); //Background
+                float3 backgroundColor = lerp(float3(0.3,0.1,0.3),float3(0.1,0.4,0.5),dot(uv,float2(0.2,0.7))); //Background
                 float3 circleColour = float3(0.9, 0.5, 0.5);
+                float3 returnCol = float3(0.0,0.0,0.0);
 
                 for (int i = 0; i < 20; i++) 
                 {
@@ -59,10 +60,10 @@ Shader "Custom/DeconstructingBubbles" {
                     float radius = 0.4 * pow(2,sin(24.0*seed)); // hash(seed * float(i) * 546 + 0.5);
                     float2 randomPos = float2(-2.0 + hash(seed + 1.0)*4.0 ,-1.0);
                     float d = sdCircle(uv,randomPos,radius);
-                    finalColor = lerp(finalColor,circleColour,1 - smoothstep(0.0,0.01,d));
+                    returnCol += lerp(backgroundColor/20,circleColour/10,1 - smoothstep(0.0,0.1,d));
                 }
 
-                return float4(finalColor,1.0);
+                return float4(returnCol,1.0);
 
             }
 
