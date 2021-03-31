@@ -116,7 +116,7 @@
             {
                 //To create a rim effect we return the maximum effect when the normal is perpendicular to the direction of the camera.
                 //This function will return 0 for vertices that are facing the camera (and so the additive blending will not make much difference)
-                float col = 1 - abs(dot(uv,normal)) * _Rim;
+                float col = 1 - saturate(dot(uv,normal)) * _Rim;
                 return col;
             }
 
