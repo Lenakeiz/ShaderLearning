@@ -33,7 +33,8 @@ The shaders are divided in different folders. At the moment I have shaders looki
 
 ### Shader toy
 
-This is a bonus folder where I am starting to look at shaders from shadertoy and try to replicate them.
+This is a bonus folder where I am starting to look at shaders from shadertoy and deconstruct them to understand them and create variants.
+- Bubble image effect from [Bubble shader](https://www.shadertoy.com/view/4dl3zn)
 
 ## Resources
 
