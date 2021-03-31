@@ -1,6 +1,6 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-// This is a study I have been doing to port simpler shadertoy to unity. Most of them are based on image effects and needs to be placed on the camera.
-// I am following a tutorial and I ll come back to this
+﻿// This is a study I have been doing to port simpler shadertoy to unity. Most of them are based on image effects and needs to be placed on the camera.
+// The script to add the image effects to the camera are in the same folder of this shader.
+// For this effect I have been looking at the following shader to take inspirations
 // https://www.shadertoy.com/view/4dl3zn
 
 Shader "Custom/DeconstructingBubbles" {
@@ -34,12 +34,12 @@ Shader "Custom/DeconstructingBubbles" {
             }
 
             //Experimenting with different random noises
-            float hash(float seed)
+            float hash(float p)
             {
 	            // Return a "random" number based on the "seed"
-                return frac(sin(seed) * 43758.5453);
+                return frac(sin(p) * 43758.5453);
             }
-
+            //Same as before but take a vector as input
             float hashSine12(float2 p)
             {
                 // Two typical hashes...
@@ -61,12 +61,6 @@ Shader "Custom/DeconstructingBubbles" {
                 return frac((p3.xx+p3.yz)*p3.zy);
             }
 
-            float2 hashPosition(float seed)
-            {
-	            // Return a "random" position based on the "seed"
-	            return float2(hash(seed), hash(seed * 2.0));
-            }
-
             float sdCircle( float2 p, float2 offset, float r ) 
             {
                 return length(p-offset)-r;
@@ -82,19 +76,19 @@ Shader "Custom/DeconstructingBubbles" {
                 float3 returnCol = float3(0.0,0.0,0.0);
                 float time = _Time.y;
 
-                //Trying out the random
-                //float displayRand = hash11(uv.x);
-                //float displayRand = hashSine12(uv * time);
-                //return float4(displayRand,displayRand,displayRand,1);
                 int Nballs = 30;
                 for (int i = 0; i < Nballs; i++) 
                 {
                     rotateUV(uv,1.2 + time * 0.01);
                     float seed = float(i);
+                    //It s very useful to use https://www.desmos.com/ to look function graphs
                     float radius = 0.15 * pow(2,sin(24.0*seed)); // hash(seed * float(i) * 546 + 0.5);
                     float2 randomPos = float2(-2.0 + hash11(seed + 1.0)*4.0 ,-1.0 + hash11(seed*542356 + 1.0)*2.0);
                     float d = sdCircle(uv,randomPos,radius);
+                    //Hashing the colour to create some movement effects on the shader
                     float3 currCircleColour = float3(circleColour.x - hash11(seed + time * 0.001) + 0.05,circleColour.y,circleColour.z);
+                    //Need to normalize otherwise the background colour will saturate quickly
+                    //Inigo instead of adding subtracts the colour before inverting the xyz of the current one. I am not sure what that operation should mean so I ll go my way.
                     returnCol += lerp(backgroundColor/Nballs,currCircleColour,1 - smoothstep(0.0,0.025,d));
                 }
 
