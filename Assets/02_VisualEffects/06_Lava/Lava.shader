@@ -8,6 +8,10 @@
         [Space(10)]
         _DisValue ("Distortion Value", Range(2,10)) = 3
         _DisSPeed ("Distortion Speed", Range(-0.4, 0.4)) = 0.1
+        [Space(10)]
+        _WaveSpeed("Wave Speed", Range(0,5)) = 1
+        _WaveFrequency("Wave Frequency", Range(0,5)) = 1
+        _WaveAmplitude("Wave Amplitude", Range(0,1)) = 0.5
     }
     SubShader
     {
@@ -38,10 +42,19 @@
             float _DisValue;
             float _DisSPeed;
 
+            float _WaveSpeed;
+            float _WaveFrequency;
+            float _WaveAmplitude;
+
             v2f vert (appdata v)
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
+
+                float4 worldPos = mul(unity_ObjectToWorld,v.vertex);
+                o.vertex.y += _WaveAmplitude * sin((-worldPos.z + (_Time.y * _WaveSpeed)) * _WaveFrequency);
+                o.vertex.y += _WaveAmplitude * cos((-worldPos.x + (_Time.y * _WaveSpeed)) * _WaveFrequency);
+
                 o.uv = TRANSFORM_TEX(v.uv, _MagmaTex);
                 return o;
             }
@@ -54,6 +67,8 @@
                 i.uv.y += distortion / _DisValue;
                 fixed4 col = tex2D(_MagmaTex, i.uv);
                 return col;
+                // For visualization purposes
+                // return float4(i.uv.x,i.uv.y, 0,1);
             }
             ENDCG
         }
@@ -86,11 +101,20 @@
 
             sampler2D _RockTex;
             float4 _RockTex_ST;
+            
+            float _WaveSpeed;
+            float _WaveFrequency;
+            float _WaveAmplitude;
 
             v2f vert (appdata v)
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
+
+                float4 worldPos = mul(unity_ObjectToWorld,v.vertex);
+                o.vertex.y += _WaveAmplitude * sin((-worldPos.z + (_Time.y * _WaveSpeed)) * _WaveFrequency);
+                o.vertex.y += _WaveAmplitude * cos((-worldPos.x + (_Time.y * _WaveSpeed)) * _WaveFrequency);
+
                 o.uv = TRANSFORM_TEX(v.uv, _RockTex);
                 return o;
             }
