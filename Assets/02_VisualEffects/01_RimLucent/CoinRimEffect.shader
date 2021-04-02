@@ -25,6 +25,7 @@
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
+            #pragma multi_compile_instancing
 
             #include "UnityCG.cginc"
 
@@ -32,6 +33,7 @@
             {
                 float4 vertex : POSITION;
                 float2 uv : TEXCOORD0;
+                UNITY_VERTEX_INPUT_INSTANCE_ID
             };
 
             struct v2f
@@ -52,6 +54,7 @@
             v2f vert (appdata v)
             {
                 v2f o;
+                UNITY_SETUP_INSTANCE_ID(v);
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 o.uvv = ComputeScreenPos(o.vertex);
@@ -82,12 +85,14 @@
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
+            #pragma multi_compile_instancing
             #include "UnityCG.cginc"
 
             struct appdata
             {
                 float4 normal : NORMAL;
-                float4 vertex : POSITION;   
+                float4 vertex : POSITION;
+                UNITY_VERTEX_INPUT_INSTANCE_ID
             };
 
             struct v2f
@@ -104,6 +109,7 @@
             v2f vert (appdata i)
             {
                 v2f o;
+                UNITY_SETUP_INSTANCE_ID(i);
                 o.pos = UnityObjectToClipPos(i.vertex);
                 //Pass the normal to the fragment shader, but keep the orientation in the world coordinate
                 o.normal = normalize(mul((float3x3)unity_ObjectToWorld, i.normal.xyz));
