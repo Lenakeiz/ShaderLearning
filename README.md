@@ -30,6 +30,7 @@ The shaders are divided in different folders. At the moment I have shaders looki
 - Distortion
 - Face extruding
 - Dissolve
+- Lava (in progress and thanks to Jetelly ^^)
 
 ### Shader toy
 
