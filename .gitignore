@@ -45,6 +45,9 @@
 /[Aa]ssets/05_ShaderScriptsMessingAround/*
 /[Aa]ssets/05_ShaderScriptsMessingAround*
 /[Aa]ssets/05_ShaderScriptsMessingAround.meta
+/[Aa]ssets/NoiseTextures/*
+/[Aa]ssets/NoiseTextures*
+/[Aa]ssets/NoiseTextures.meta
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
