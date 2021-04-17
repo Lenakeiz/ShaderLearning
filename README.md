@@ -30,7 +30,8 @@ The shaders are divided in different folders. At the moment I have shaders looki
 - Distortion
 - Face extruding
 - Dissolve
-- Lava (in progress and thanks to Jetelly ^^)
+- Lava (Jettelly based) - featuring parallax displacement
+- Lava (Jetelly based)  - featuring parallax occlusion mapping
 
 ### Shader toy
 
@@ -47,7 +48,7 @@ Together with the [HLSL reference](https://docs.microsoft.com/en-us/windows/win3
 And finally here a list of amazing people sharing their knowledge with shaders. The list is mixed in terms of the level of techniques explained, but neverthless I think it useful to have a more broader idea of different uses for shaders.
 
 - [Harry Alizavakis](https://twitter.com/HarryAlisavakis)
-- [Jetelly](https://www.youtube.com/channel/UCDe9IaIvr1XOP3vbTgIekBQ)
+- [Jettelly](https://www.youtube.com/channel/UCDe9IaIvr1XOP3vbTgIekBQ)
 - [Making stuff look good in Unity](https://www.youtube.com/channel/UCEklP9iLcpExB8vp_fWQseg)
 - [Alan Zucconi](https://www.alanzucconi.com/tutorials/)
 - [Freya Holmer](https://twitter.com/FreyaHolmer)
