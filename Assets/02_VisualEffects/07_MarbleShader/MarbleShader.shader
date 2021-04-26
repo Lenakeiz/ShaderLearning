@@ -3,14 +3,13 @@
     Properties
     {
         _NoiseTex ("Noise Texture", 2D) = "white" {}
-        _NoiseThreshold("Noise Threshold", Range(0,1)) = 0.1
-        [Space(10)]
+        _NoiseThreshold("Noise Threshld", Range(0,1)) = 0.5
         _Iterations("Iterations", float) = 5
-        _ParallaxTex("Parallax Base Texture", 2D) = "white" {}
-        _ParallaxDepth("Parallax amount", float) = 1    }
+        _ParallaxDepth("Parallax Depth", float) = 1    
+    }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "RenderType"="Transparent" }
         LOD 100
 
         Pass
@@ -35,18 +34,15 @@
             {
                 float2 uv : TEXCOORD0;
                 float4 vertex : SV_POSITION;
-                float2 uvParallax : TEXCOORD1;
-                float3 viewDirTangent : TEXCOORD2;
+                float3 viewDirTangent : TEXCOORD1;
             };
 
             sampler2D _NoiseTex;
             float4 _NoiseTex_ST;
-            float _NoiseThreshold;
 
             float _Iterations;
-            sampler2D _ParallaxTex;
-            float4 _ParallaxTex_ST;
             float _ParallaxDepth;
+            float _NoiseThreshold;
 
             v2f vert (appdata v)
             {
@@ -57,49 +53,44 @@
                 o.viewDirTangent = mul(objectToTangent, ObjSpaceViewDir(v.vertex));
 
                 o.uv = TRANSFORM_TEX(v.uv, _NoiseTex);
-                o.uvParallax = TRANSFORM_TEX(v.uv, _ParallaxTex);
                 return o;
+            }
+
+            float getDistance(float2 input)
+            {
+                return sqrt(input.x * input.x + input.y * input.y);
+            }
+
+            float2 normalizeUV(float2 uvInput)
+            {
+                return ((uvInput - 0.5) * 2);
             }
 
             float4 frag(v2f i) : SV_Target
             {
                 i.viewDirTangent = normalize(i.viewDirTangent);
-
+                
+                float2 uv_norm = normalizeUV(i.uv);
                 float2 uv = i.uv;
-                float2 uvParallax = i.uvParallax;
 
-                float4 colore = float4(0, 0, 0, 0);
+                float4 color = float4(0, 0, 0, 0.5);
                 float stepSize = float(1) / _Iterations;
+                float4 mask = tex2D(_NoiseTex, uv);
+                
+                float distance = getDistance(uv_norm);
 
                 for (int p = 0; p < _Iterations; p++) {
-                    float f = p;
-                    float effect = stepSize * f;
-                    float2 parallax_uv = uv - (i.viewDirTangent.xy * _ParallaxDepth * effect);
-                    float value = tex2D(_NoiseTex, parallax_uv).r;
-                    float tempCol = value * smoothstep(effect, 1, value);
-                    colore += lerp(float4(1,1,1,1), float4(0,0,0,0), effect) * tempCol;
+                    float ratio = stepSize * (float)p; //ratio moves us step by step in the viewdirection space
+                    float2 parallax_uv = uv - (i.viewDirTangent.xy) * lerp(0.0, _ParallaxDepth, ratio);//move uvs according to a depth
+                    float parallaxDistance = getDistance(normalizeUV(parallax_uv));//get current distance from the center of the calculated uv 
+                    float4 value = tex2D(_NoiseTex, parallax_uv);//Sample the gradient mask
+                    value.a = 0.5;
+                    float tempCol = value * step(parallaxDistance, lerp(_NoiseThreshold, 0.0, ratio));//calculate the color by controlling for the cutoff
+                    color += tempCol;
                 }
-                return colore;
+                //color /= _Iterations;
+                return color;
 
-
-
-                float mask = tex2D(_NoiseTex, uv).x;
-                float col = step(_NoiseThreshold, mask);
-
-                float parallax = 0;
-                for (int j = 0; j < _Iterations; j++) {
-                    float ratio = (float)j / _Iterations;
-
-                    parallax += tex2D(_NoiseTex, uv + lerp(0, _ParallaxDepth, ratio) * normalize(i.viewDirTangent)) * lerp(1, 0, ratio);
-                }
-                parallax /= _Iterations;
-
-                // sample the texture
-
-
-                float baseCol = tex2D(_ParallaxTex, uvParallax) * mask + col + parallax;
-
-                return col;
             }
             ENDCG
         }
