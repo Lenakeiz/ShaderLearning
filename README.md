@@ -32,6 +32,7 @@ The shaders are divided in different folders. At the moment I have shaders looki
 - Dissolve
 - Lava (Jettelly based) - featuring parallax displacement
 - Lava (Jetelly based)  - featuring parallax occlusion mapping
+- Outline
 
 ### Shader toy
 
