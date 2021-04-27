@@ -58,7 +58,7 @@
             {
                 v2f o;
                 float t = _Time.y;
-                _OutlineValue = (sin(t) * 0.5 + 0.5) * _OutlineValue;
+                _OutlineValue = (sin(t * 1.5) * 0.5 + 0.5) * _OutlineValue;
                 float4 vertexPos = calculateOutline(v.vertex, _OutlineValue);
                 // float4 objPos = mul(unity_ObjectToWorld, float4(v.vertex.xyz, 1));
                 // float dist = distance(_WorldSpaceCameraPos, objPos.xyz) / _ScreenParams.g;
@@ -72,7 +72,7 @@
             {
                 float t = _Time.y;
                 // sample the texture
-                _OutlineColor.a = sin(t) * 0.5 + 0.5;
+                _OutlineColor.a = sin(t * 1.5) * 0.5 + 0.5;
                 
                 return _OutlineColor;
             }
