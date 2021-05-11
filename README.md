@@ -34,6 +34,7 @@ The shaders are divided in different folders. At the moment I have shaders looki
 - Lava (Jettelly based)  - featuring parallax occlusion mapping
 - Outline
 - Water shader (credits to Harry) (in progress)
+- Texture Lerping
 
 ### Shader toy
 
