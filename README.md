@@ -38,7 +38,7 @@ The shaders are divided in different folders. At the moment I have shaders looki
 
 ### Challenges
 These challenges have been done while following Harry discord channel (see bottom for more information)
-- Paper Lantern (surface shader with dissolve cutout texture to simulate burning)
+- Paper Lantern (surface shader with dissolve cutout texture to simulate burning) (in progress)
 
 ### Shader toy
 
