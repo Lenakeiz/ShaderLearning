@@ -36,6 +36,10 @@ The shaders are divided in different folders. At the moment I have shaders looki
 - Water shader (credits to Harry) (in progress)
 - Texture Lerping
 
+### Challenges
+These challenges have been done while following Harry discord channel (see bottom for more information)
+- Paper Lantern (surface shader with dissolve cutout texture to simulate burning)
+
 ### Shader toy
 
 This is a bonus folder where I am starting to look at shaders from shadertoy and deconstruct them to understand them and create variants.
