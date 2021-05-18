@@ -41,7 +41,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3070973235847690751}
-  m_Mesh: {fileID: -7347861948697777150, guid: d5b6e51c1d2a65642a50663edb431f10, type: 3}
+  m_Mesh: {fileID: -2124705421725058983, guid: d5b6e51c1d2a65642a50663edb431f10, type: 3}
 --- !u!23 &3575494797475010602
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fc70feae235812f4e911084649629cc4, type: 2}
+  - {fileID: 2100000, guid: badfb7f25057df442ba9d38f592bc9ce, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -296,6 +296,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5940655528898583105}
   - component: {fileID: 3605925167489576412}
+  - component: {fileID: 2764964098386523033}
   m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
@@ -328,9 +329,9 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.5
-  m_Range: 4
+  m_Color: {r: 1, g: 0.9463421, b: 0.8066038, a: 1}
+  m_Intensity: 5
+  m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -378,3 +379,19 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &2764964098386523033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7699908897844811687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96d3650ae9f21894b83172beff000aee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minIntensity: 3
+  maxIntensity: 5
+  minWaitTime: 0.2
+  maxWaitTime: 0.5

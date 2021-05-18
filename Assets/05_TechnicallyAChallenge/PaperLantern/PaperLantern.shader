@@ -70,15 +70,12 @@
             float l = (IN.worldPos.y - _Height);
 			clip(  (l + (tex2D(_NoiseTex, IN.uv_NoiseTex) * _Interpolation)) );
 
-            // Albedo comes from a texture tinted by color
             fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
             
             o.Albedo = c.rgb;
-            //o.Normal = normal * 2.0;
-            // Metallic and smoothness come from slider variables
             o.Metallic   = _Metallic;
             o.Smoothness = _Glossiness;
-            o.Emission   = lerp(_EmissionColor, saturate(l) *_DissolveColor.rgb * tex2D(_NoiseTex, IN.uv_NoiseTex), smoothstep(1.0-_Interpolation, 0.1, saturate(l)));
+            o.Emission   = lerp(_DissolveColor, saturate(l) *_EmissionColor.rgb, smoothstep(1.0-_Interpolation, 0.1, saturate(l)));
             o.Alpha = c.a;
         }
         ENDCG

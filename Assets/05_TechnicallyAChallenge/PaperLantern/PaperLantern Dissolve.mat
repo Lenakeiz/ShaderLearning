@@ -78,10 +78,10 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _Height: -1.76
-    - _Interpolation: 10
+    - _Height: -1.6
+    - _Interpolation: 4
     - _Level: 0
-    - _Metallic: 0.753
+    - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
@@ -91,9 +91,9 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 0.26795828, b: 0, a: 0.27058825}
+    - _Color: {r: 1, g: 0.33601153, b: 0, a: 0.27058825}
     - _DisColor: {r: 1, g: 1, b: 1, a: 1}
     - _DissolveColor: {r: 0, g: 0, b: 0, a: 1}
     - _EdgeColour1: {r: 1, g: 1, b: 1, a: 1}
     - _EdgeColour2: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 16, g: 0, b: 8.282353, a: 0.019607844}
+    - _EmissionColor: {r: 15.999998, g: 19.853401, b: 0, a: 1}
