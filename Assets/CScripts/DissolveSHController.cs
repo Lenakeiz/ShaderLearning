@@ -7,7 +7,7 @@ public class DissolveSHController : MonoBehaviour
 
     SkinnedMeshRenderer rend;
     Material dissolveMat;
-    BotControlScript bcs;
+    //BotControlScript bcs;
 
     public float duration = 1.0f;
     public float delay = 0.5f;
@@ -15,8 +15,8 @@ public class DissolveSHController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bcs = GetComponent<BotControlScript>();
-        bcs.animChange += StartDissolving;
+        //bcs = GetComponent<BotControlScript>();
+        //bcs.animChange += StartDissolving;
 
         rend = GetComponentInChildren<SkinnedMeshRenderer>();
         if(rend != null)
